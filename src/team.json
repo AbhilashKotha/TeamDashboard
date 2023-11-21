@@ -1,26 +1,100 @@
 {
-    "members": [
-      {
-        "name": "John Doe",
-        "role": "Developer",
-        "bio": "Bio1",
-        "largerBio": "This is a larger bio for John Doe.",
-        "additionalInfo": "Additional information about John Doe."
-      },
-      {
-        "name": "Jane Doe",
-        "role": "Designer",
-        "bio": "Bio2",
-        "largerBio": "This is a larger bio for Jane Doe.",
-        "additionalInfo": "Additional information about Jane Doe."
-      },
-      {
-        "name": "Jim Smith",
-        "role": "Manager",
-        "bio": "Bio3",
-        "largerBio": "This is a larger bio for Jim Smith.",
-        "additionalInfo": "Additional information about Jim Smith."
-      }
-    ]
+  "members": [
+    {
+      "name": "John Doe",
+      "role": "Developer",
+      "bio": "Bio1",
+      "largerBio": "This is a larger bio for John Doe.",
+      "additionalInfo": "Additional information about John Doe."
+    },
+    {
+      "name": "Jane Doe",
+      "role": "Designer",
+      "bio": "Bio2",
+      "largerBio": "This is a larger bio for Jane Doe.",
+      "additionalInfo": "Additional information about Jane Doe."
+    },
+    {
+      "name": "Jim Smith",
+      "role": "Manager",
+      "bio": "Bio3",
+      "largerBio": "This is a larger bio for Jim Smith.",
+      "additionalInfo": "Additional information about Jim Smith."
+    }
+  ],
+
+  "projects":[
+    {
+      "projectName": "Redesign Website", 
+      "projectStatus": "In Progress",
+      "description": "Redesign the company website to modernize it",
+      "progressStatus": "Wireframes Approved", 
+      "completionRate": 60,
+      "projectGoals": [
+        "Complete new sitemap",
+        "Create wireframes for home and product pages",
+        "Code new frontend in React"
+      ]
+    },
+    {
+      "projectName": "Mobile App",
+      "projectStatus": "Not Started",
+      "completionRate": 5,
+      "description": "Build cross-platform mobile app",
+      "progressStatus": "Planning Stage",
+      "projectGoals": [
+        "Document app requirements",
+        "Research technology options",
+        "Hire mobile developers"
+      ]
+    },
+    {
+      "projectName": "CRM Integration",
+      "projectStatus": "In Progress",
+      "completionRate": 50,
+      "description": "Integrate CRM system with database",
+      "progressStatus": "API Documentation Complete",
+      "projectGoals": [  
+        "Map CRM data fields to database",
+        "Develop APIs for data synchronization",
+        "Test and deploy integration"
+      ]
+    },
+    {
+      "projectName": "Cloud Migration",
+      "projectStatus": "Not Started",
+      "completionRate": 100,
+      "description": "Migrate infrastructure to cloud",
+      "progressStatus": "Release Stage",
+      "projectGoals": [
+        "Define cloud architectures",
+        "Estimate costs for each provider",
+        "Set migration schedule"
+      ]
+    }
+  ],
+  "issuesData": {
+    "totalIssues": 100,
+    "issuesClosed": 20,
+    "issuesInProgress": 60,
+    "issuesNotStarted": 20    
+  },
+  "peopleIssuesData": {
+    "johnDoe": {
+      "openIssues": 5,
+      "inProgressIssues": 30,
+      "closedIssues": 8 
+    },
+    "janeDoe": {
+      "openIssues": 10, 
+      "inProgressIssues": 25,
+      "closedIssues": 10
+    },
+    "jimSmith": {
+      "openIssues": 5,
+      "inProgressIssues": 5,
+      "closedIssues":2
+    }
   }
+}
   
