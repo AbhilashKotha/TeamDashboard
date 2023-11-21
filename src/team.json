@@ -1,0 +1,26 @@
+{
+    "members": [
+      {
+        "name": "John Doe",
+        "role": "Developer",
+        "bio": "Bio1",
+        "largerBio": "This is a larger bio for John Doe.",
+        "additionalInfo": "Additional information about John Doe."
+      },
+      {
+        "name": "Jane Doe",
+        "role": "Designer",
+        "bio": "Bio2",
+        "largerBio": "This is a larger bio for Jane Doe.",
+        "additionalInfo": "Additional information about Jane Doe."
+      },
+      {
+        "name": "Jim Smith",
+        "role": "Manager",
+        "bio": "Bio3",
+        "largerBio": "This is a larger bio for Jim Smith.",
+        "additionalInfo": "Additional information about Jim Smith."
+      }
+    ]
+  }
+  
