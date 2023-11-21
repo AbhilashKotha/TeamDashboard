@@ -18,17 +18,10 @@ app.post('/login', (req, res) => {
   const user = users.find((u) => u.username === username && u.password === password);
 
   if (user) {
-    res.json({ token: 'dummyToken', username: user.username }); // Simulated token for successful login
+    res.json({ token: 'dummyToken', username: user.username });
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
   }
-});
-
-app.get('/user', (req, res) => {
-  
-  if (users.id===1) {
-  res.json({ id: '1', username: 'user1' });
-  } // Simulated user data for authenticated user
 });
 
 app.listen(port, () => {

@@ -1,6 +1,5 @@
 // ParentComponent.js
 import React, { useState } from 'react';
-import Navbar from './AuthNavbar';
 import App from '../App';
 
 const ParentComponent = () => {
@@ -12,7 +11,6 @@ const ParentComponent = () => {
 
   return (
     <div>
-      
       <App key={navbarKey} refreshNavbar={refreshNavbar} />
     </div>
   );

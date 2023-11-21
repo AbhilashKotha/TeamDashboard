@@ -1,14 +1,17 @@
 import TeamMember from "./components/TeamMember";
 import MemberDetail from "./components/MemberDetail";
-import Navbar from "./components/AuthNavbar";
+import Navbar from "./components/Navbar";
 import SignIn from "./components/SignIn";
 import {AuthProvider, AuthContext} from "./components/AuthContext";
 import React, { useState, useContext } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import teamData from "./team.json"
 import "./App.css";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-const App = ({ refreshNavbar }) => {
+const App = ({refreshNavbar}) => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [showSignInButton, setShowSignInButton] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,11 +20,10 @@ const App = ({ refreshNavbar }) => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState('');
   const [navbarKey, setNavbarKey] = useState(0);
+  const [navsigninClick, setNavSigninClick] = useState(false);
 
   const handleTeamMemberClick = (member) => {
     setSelectedMember(member);
-    console.log("in handle team member "+user);
-    //console.log("handle team member1 "+ isAuthenticated);
     if (!user) {
       setShowSignInButton(true);
       setIsAuthenticated(false);
@@ -30,24 +32,6 @@ const App = ({ refreshNavbar }) => {
     setShowSignInButton(false);
     setIsAuthenticated(true);
   };
-
-  // const handleSignInSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Simulate authentication logic (replace with actual authentication logic)
-  //   if (
-  //     credentials.username === "yourUsername" &&
-  //     credentials.password === "yourPassword"
-  //   ) {
-  //     setIsAuthenticated(true);
-  //     setShowSignInButton(false);
-  //   } else {
-  //     alert("Invalid credentials. Try again.");
-  //   }
-  // };
-
-  // const handleCredentialsChange = (e) => {
-  //   setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  // };
   
   const handleLogin = async (credentials) => {
     try {
@@ -61,39 +45,48 @@ const App = ({ refreshNavbar }) => {
       setShowSignInButton(false);
       setSuccess("Login successful!");
       refreshNavbar();
-      // Display a pop-up message
-    //window.alert("Login successful!");
     } catch (error) {
       console.error("Error during login:", error);
-      // Display an alert or handle the error as needed
       alert("An error occurred during login. Please try again.");
     }
     
   }
-
-  
-
+  const signinClicked = () => { 
+    setNavSigninClick(!navsigninClick)
+  }
   return (
+    <BrowserRouter>
     <AuthProvider>
     <div>
-      <Navbar/>
-      <div className="team-list">
-        {teamData.members.map((member, index) => (
-          <TeamMember
-            key={index}
-            name={member.name}
-            role={member.role}
-            bio={member.bio}
-            onClick={() => handleTeamMemberClick(member)}
-          />
-        ))}
-        {showSignInButton && !isAuthenticated && (
-          <SignIn onLogin={handleLogin} /> 
+      <Navbar onSignin= {signinClicked}/>
+      <Container fluid>
+        <h1 >Meet our team</h1>
+        <br></br>
+        <Row>
+        <div className="team-list">
+          {teamData.members.map((member, index) => (
+            <Col >
+              <TeamMember
+                key={index}
+                name={member.name}
+                role={member.role}
+                bio={member.bio}
+                onClick={() => handleTeamMemberClick(member)}
+              />
+            </Col>
+          ))}
+        </div>
+        </Row>
+      </Container>
+      {((showSignInButton && !isAuthenticated) ||navsigninClick )&&(
+          <div className="">
+            <SignIn onLogin={handleLogin} /> 
+          </div>
         )}
-      </div>
-      {isAuthenticated && <MemberDetail member={selectedMember} />}
+      {isAuthenticated && selectedMember  && <MemberDetail member={selectedMember} />}
     </div>
     </AuthProvider>
+    </BrowserRouter>
   );
 };
 

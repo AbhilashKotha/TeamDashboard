@@ -1,24 +1,17 @@
 
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
-  //const [isAuthenticated, setIsAuthenticated] = useState(false);
-  //const [showSignInButton, setShowSignInButton] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
-    console.log('token', token);
-    if (token) {
-      //setIsAuthenticated(true);
-      
+    if (token) { 
       setUser(username);
-      console.log('username', username);
-      //setShowSignInButton(false);
     }
   }, []);
 
@@ -34,7 +27,6 @@ const AuthProvider = ({ children }) => {
     const data = await response.json();
     
     if (data.token) {
-      console.log('credentials',credentials.username);
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
       setUser({ 
@@ -42,7 +34,6 @@ const AuthProvider = ({ children }) => {
       });
       return true;
     } else {
-      console.log(credentials)
       throw new Error('Invalid credentials');
     }
   };
@@ -54,7 +45,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const handleHome = () => {
-    window.location.reload(); // Reload the page for the "Home" action
+    window.location.reload();
   };
 
   const isAuthenticated = () => {
@@ -70,12 +61,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export {AuthProvider};
-export const useAuth = () => {
-    const context = useContext(AuthContext);
-  
-    if (!context) {
-      throw new Error('useAuth must be used within an AuthProvider');
-    }
-  
-    return context;
-  };

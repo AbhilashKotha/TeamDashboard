@@ -1,10 +1,6 @@
-import React, { useContext } from 'react'
-//import { AuthContext } from './AuthPage'
+import React from 'react'
 
 function MemberDetail({member}) {
-    //const { handleLogout } = useContext(AuthContext);
-    //console.log(AuthContext);
-    
   return (
     <div className="member-detail">
       <h2>{member.name}</h2>
