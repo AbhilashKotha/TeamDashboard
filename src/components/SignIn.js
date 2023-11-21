@@ -25,6 +25,9 @@ const SignIn = ({ onLogin }) => {
           name="username"
           onChange={handleInputChange}
         />
+        <Form.Text className="text-muted">
+          Test Username: user1
+        </Form.Text>
       </Form.Group>
 
       <Form.Group controlId="formPassword">
@@ -34,6 +37,9 @@ const SignIn = ({ onLogin }) => {
           name="password"
           onChange={handleInputChange}
         />
+        <Form.Text className="text-muted">
+          Test Password: password
+        </Form.Text>
       </Form.Group>
       <br></br>
       <Button variant="primary" type="submit">

@@ -169,10 +169,6 @@ const App = ({refreshNavbar}) => {
         <Modal.Body>
           <SignIn onLogin={handleLogin} /> 
         </Modal.Body>
-        <Modal.Footer>
-          <p>Username: user1</p>
-          <p>Password: password1</p>
-        </Modal.Footer>
       </Modal>
     </div>
     </AuthProvider>

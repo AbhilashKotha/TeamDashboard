@@ -62,7 +62,7 @@ function DiscussionForum() {
           />
         </Form.Group>
         <br></br>
-        <Button variant="primary" onClick={addMessage}>
+        <Button variant="dark" onClick={addMessage}>
           Send
         </Button>
       </Form>
