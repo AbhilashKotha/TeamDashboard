@@ -1,6 +1,7 @@
 import TeamMember from "./components/TeamMember";
 import MemberDetail from "./components/MemberDetail";
 import Navbar from "./components/Navbar";
+import DiscussionForum from "./components/DiscussionForum";
 import SignIn from "./components/SignIn";
 import {AuthProvider, AuthContext} from "./components/AuthContext";
 import React, { useState, useContext } from "react";
@@ -84,6 +85,7 @@ const App = ({refreshNavbar}) => {
           </div>
         )}
       {isAuthenticated && selectedMember  && <MemberDetail member={selectedMember} />}
+      {user && <DiscussionForum /> }
     </div>
     </AuthProvider>
     </BrowserRouter>
