@@ -1,6 +1,6 @@
 import TeamMember from "./components/TeamMember";
 import MemberDetail from "./components/MemberDetail";
-import Navbar from "./components/Navbar";
+import NavbarComponent from "./components/NavbarComponent";
 import DiscussionForum from "./components/DiscussionForum";
 import SignIn from "./components/SignIn";
 import {AuthProvider, AuthContext} from "./components/AuthContext";
@@ -74,9 +74,9 @@ const App = ({refreshNavbar}) => {
     <BrowserRouter>
     <AuthProvider>
     <div>
-      <Navbar onSignin= {signinClicked}/>
+      <NavbarComponent onSignin= {signinClicked}/>
       <Container fluid>
-        <h1 >Meet our team</h1>
+        <h1 id="members">Meet our team</h1>
         <br></br>
         <Row>
           <div className="team-list">
@@ -100,7 +100,7 @@ const App = ({refreshNavbar}) => {
             <br></br>
           </Col>
         </Row>
-        <h1 >Projects in progress</h1>
+        <h1 id="projects">Projects in progress</h1>
         <br></br>
         <Row>
           <div className="project-list">
@@ -122,10 +122,12 @@ const App = ({refreshNavbar}) => {
             {user && selectedProject && <ProjectDetail project={selectedProject} />}
           </Col>
         </Row>
-        <br></br>
-        <h1 >Metrics</h1>
-        <br></br>
+        
         {user && (
+        <>
+        <br></br>
+        <h1 id="metrics">Metrics</h1>
+        <br></br>
         <Row>
           <Col>
             <IssuesChart />
@@ -137,13 +139,18 @@ const App = ({refreshNavbar}) => {
             <PeopleIssuesChart />
           </Col>
         </Row>
+        </>
         )}
-        <br></br>
-        <h1 >Discussion Forum</h1>
-        <br></br>
+        
         <Row>
           <Col>
-            {user && <DiscussionForum /> }
+            {user && 
+            <>
+            <br></br>
+            <h1 id="discussion">Discussion Forum</h1>
+            <br></br>
+            <DiscussionForum />
+            </> }
           </Col>
         </Row>
       </Container>
