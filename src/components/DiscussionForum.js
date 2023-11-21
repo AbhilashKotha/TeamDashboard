@@ -57,7 +57,8 @@ function DiscussionForum() {
             as="textarea" 
             rows={3}
             value={newMessage}
-            onChange={e => setNewMessage(e.target.value)}  
+            onChange={e => setNewMessage(e.target.value)} 
+            placeholder='Type your message here and click on send button.' 
           />
         </Form.Group>
         <br></br>

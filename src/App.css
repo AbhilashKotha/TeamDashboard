@@ -51,6 +51,7 @@ body {
 
 .team-member {
   border: 1px solid #ccc;
+  border-radius: 20px;
   padding: 10px;
   cursor: pointer;
   text-align: center;
@@ -77,10 +78,15 @@ body {
   .team-list {
     flex-direction: column;
   }
+}
+.discussion-container{
+  border: #051d20 2px solid;
+  border-radius: 10px;
 
-  .team-member {
-    width: 100%;
-  }
+}
+.message-list {
+  max-height: 400px;
+  overflow: auto;
 }
 
 /* Navbar styling */

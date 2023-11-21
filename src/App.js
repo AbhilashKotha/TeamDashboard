@@ -11,8 +11,11 @@ import "./App.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const App = ({refreshNavbar}) => {
+  
   const [selectedMember, setSelectedMember] = useState(null);
   const [showSignInButton, setShowSignInButton] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,6 +25,10 @@ const App = ({refreshNavbar}) => {
   const [success, setSuccess] = useState('');
   const [navbarKey, setNavbarKey] = useState(0);
   const [navsigninClick, setNavSigninClick] = useState(false);
+  const handleClose = () => {
+    setNavSigninClick(false);
+    setShowSignInButton(false);
+  }
 
   const handleTeamMemberClick = (member) => {
     setSelectedMember(member);
@@ -64,28 +71,53 @@ const App = ({refreshNavbar}) => {
         <h1 >Meet our team</h1>
         <br></br>
         <Row>
-        <div className="team-list">
-          {teamData.members.map((member, index) => (
-            <Col >
-              <TeamMember
-                key={index}
-                name={member.name}
-                role={member.role}
-                bio={member.bio}
-                onClick={() => handleTeamMemberClick(member)}
-              />
-            </Col>
-          ))}
-        </div>
+          <div className="team-list">
+            {teamData.members.map((member, index) => (
+              <Col>
+                <TeamMember
+                  key={index}
+                  name={member.name}
+                  role={member.role}
+                  bio={member.bio}
+                  onClick={() => handleTeamMemberClick(member)}
+                />
+              </Col>
+            ))}
+          </div>
+        </Row>
+        <Row>
+          <Col>
+            <br></br>
+            {isAuthenticated && selectedMember  && <MemberDetail member={selectedMember} />}
+            <br></br>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {user && <DiscussionForum /> }
+          </Col>
         </Row>
       </Container>
-      {((showSignInButton && !isAuthenticated) ||navsigninClick )&&(
-          <div className="">
-            <SignIn onLogin={handleLogin} /> 
-          </div>
-        )}
-      {isAuthenticated && selectedMember  && <MemberDetail member={selectedMember} />}
-      {user && <DiscussionForum /> }
+      <Modal
+        show={((showSignInButton && !isAuthenticated) ||navsigninClick )}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Sign in</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <SignIn onLogin={handleLogin} /> 
+        </Modal.Body>
+        <Modal.Footer>
+          <p>Username: user1</p>
+          <p>Password: password1</p>
+        </Modal.Footer>
+      </Modal>
     </div>
     </AuthProvider>
     </BrowserRouter>

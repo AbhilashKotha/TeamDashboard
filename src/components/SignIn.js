@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import { useContext } from 'react';
-import { AuthContext } from './AuthContext';
+import { Form, Button } from 'react-bootstrap';
 
 const SignIn = ({ onLogin }) => {
 
@@ -18,30 +17,29 @@ const SignIn = ({ onLogin }) => {
     }));
   };
   return (
-    <div className="signin-form">
-      <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            onChange={handleInputChange}
-          />
-        </label>
-        <button type="submit">Sign In</button>
-      </form>
-    </div>
+    <Form className="signin-form" onSubmit={handleSubmit}>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control 
+          type="text"
+          name="username"
+          onChange={handleInputChange}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control 
+          type="password"
+          name="password"
+          onChange={handleInputChange}
+        />
+      </Form.Group>
+      <br></br>
+      <Button variant="primary" type="submit">
+        Sign In
+      </Button>
+    </Form>
   );
 };
 
